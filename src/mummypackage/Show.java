@@ -14,12 +14,13 @@ import classes.Note;
 import impdaos.EnseignantImpDao;
 import impdaos.EtudiantImpDao;
 import impdaos.FiliereImpDao;
+import impdaos.GenericImpDao;
 import impdaos.MatiereImpDao;
 import impdaos.NoteImpDao;
 
 public class Show {
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 //		EnseignantImpDao enseignantImpDao = new EnseignantImpDao();
 //
 //        // Test save method
@@ -133,26 +134,26 @@ public class Show {
 //    System.out.println("Matiere removed: " + matiere1.getName());
 //
 //		//########################## Etudiants  ##########################//
-     EtudiantImpDao etudiantImpDao = new EtudiantImpDao();
-
-
-     Etudiant etudiant1 = new Etudiant(338, "ttttt", 500); 
-     etudiantImpDao.save(etudiant1);
-     
-     System.out.println("Etudiant saved: " + etudiant1.getName());
-
-     // Test update method
-     etudiant1.setName("titi toto");
-     etudiantImpDao.update(etudiant1);
-     System.out.println("Etudiant updated: " + etudiant1.getName());
-
-   
-     Etudiant foundEtudiant = etudiantImpDao.findEtudiant(331);
-     if (foundEtudiant != null) {
-     System.out.println("Found Etudiant: " + foundEtudiant.getName());
-     } else {
-     System.out.println("Etudiant not found.");
-     }
+//     EtudiantImpDao etudiantImpDao = new EtudiantImpDao();
+//
+//
+//     Etudiant etudiant1 = new Etudiant(338, "ttttt", 500); 
+//     etudiantImpDao.save(etudiant1);
+//     
+//     System.out.println("Etudiant saved: " + etudiant1.getName());
+//
+//     // Test update method
+//     etudiant1.setName("titi toto");
+//     etudiantImpDao.update(etudiant1);
+//     System.out.println("Etudiant updated: " + etudiant1.getName());
+//
+//   
+//     Etudiant foundEtudiant = etudiantImpDao.findEtudiant(331);
+//     if (foundEtudiant != null) {
+//     System.out.println("Found Etudiant: " + foundEtudiant.getName());
+//     } else {
+//     System.out.println("Etudiant not found.");
+//     }
 
 
 //     List<Etudiant> allEtudiants = etudiantImpDao.getAllEtudiants();
@@ -252,8 +253,49 @@ public class Show {
 //        noteS.getMinMaxNote(matiereIDForTest, notesForMatiere);
 //    
 //    }
-}
-}
+//}
+//}
+	    public static void main(String[] args) {
+	        // Instantiate the DAO for Enseignant
+	        GenericImpDao<Enseignant> enseignantDao = new GenericImpDao<>(Enseignant.class);
+
+	        // Create a new instance of Enseignant
+	        Enseignant newEnseignant = new Enseignant();
+	        newEnseignant.setEnseignantID(141); // Set ID (if not auto-incremented)
+	        newEnseignant.setName("Dr Example");
+
+	        // Save the new enseignant
+	        System.out.println("Saving new Enseignant...");
+	        enseignantDao.save(newEnseignant);
+
+	        // Update the enseignant
+	        System.out.println("Updating Enseignant...");
+	        newEnseignant.setName("Dr Updated Example");
+	        enseignantDao.update(newEnseignant);
+
+	        // Find enseignant by ID
+	        System.out.println("Fetching Enseignant by ID...");
+	        Enseignant foundEnseignant = enseignantDao.findById(112);
+	        if (foundEnseignant != null) {
+	            System.out.println("Found Enseignant: " + foundEnseignant.getName());
+	        } else {
+	            System.out.println("Enseignant not found.");
+	        }
+
+	        // Find all enseignants
+	        System.out.println("Fetching all Enseignants...");
+	        List<Enseignant> allEnseignants = enseignantDao.findAll();
+	        for (Enseignant e : allEnseignants) {
+	            System.out.println("Enseignant: ID=" + e.getEnseignantID() + ", Name=" + e.getName());
+	        }
+
+	        // Remove the enseignant
+	        System.out.println("Removing Enseignant...");
+	        enseignantDao.remove(newEnseignant);
+	        System.out.println("Enseignant removed.");
+	    }
+	}
+
 	    
     
     

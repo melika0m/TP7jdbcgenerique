@@ -7,7 +7,7 @@ public class Enseignant {
     private String name;
     
    
-    Enseignant() {}
+    public Enseignant() {}
     
    
     public Enseignant(int enseignantID, String name) {
