@@ -11,7 +11,7 @@ import classes.Etudiant;
 import classes.Filiere;
 import classes.Matiere;
 import classes.Note;
-import impdaos.EnseignantImpDao;
+
 import impdaos.EtudiantImpDao;
 import impdaos.FiliereImpDao;
 import impdaos.GenericImpDao;
